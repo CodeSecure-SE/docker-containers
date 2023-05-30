@@ -4,6 +4,7 @@ RUN apt-get update && apt-get install gosu
 
 # Add CodeSonar from the latest CodeSonar release
 COPY --from=canuckmh/codesonar-c-builder:7.3p1 /opt/codesonar/. /opt/codesonar
+COPY --from=canuckmh/codesonar-c-builder:7.3p1 /opt/codesonar-github/. /opt/codesonar-github
 
 # This is to adjust the user in the container to a local user
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh

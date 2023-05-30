@@ -108,9 +108,9 @@ RUN test "x$CODESONAR_PACKAGE" '!=' x || \
 
 # Untar codesonar
 ADD $CODESONAR_PACKAGE /opt/
-
-# Make a symlink so we can do stuff without knowing the exact codesonar version number.
 RUN ln -s /opt/codesonar-* /opt/codesonar
+ADD codesonar-github-integration-1.2p0.tar.gz /opt2/
+
 
 # Accept the EULA
 RUN rm /opt/codesonar/UNACCEPTED_LICENSE.txt
@@ -224,6 +224,8 @@ third-party/python \
 # deleted.
 FROM $BASE_IMAGE
 COPY --from=codesonar_install_staging /opt/codesonar/. /opt/codesonar
+COPY --from=codesonar_install_staging /opt2/codesonar-github-integration-1.2p0/distro-image/codesonar-github/. /opt/codesonar-github
+
 
 ENV TZ=America/New_York 
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
