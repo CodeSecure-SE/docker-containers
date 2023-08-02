@@ -110,6 +110,7 @@ RUN test "x$CODESONAR_PACKAGE" '!=' x || \
 ADD $CODESONAR_PACKAGE /opt/
 RUN ln -s /opt/codesonar-* /opt/codesonar
 ADD codesonar-github-integration-1.2p0.tar.gz /opt2/
+ADD codesonar-gitlab-integration-1.5p0.tar.gz /opt3/
 
 
 # Accept the EULA
@@ -225,6 +226,7 @@ third-party/python \
 FROM $BASE_IMAGE
 COPY --from=codesonar_install_staging /opt/codesonar/. /opt/codesonar
 COPY --from=codesonar_install_staging /opt2/codesonar-github-integration-1.2p0/distro-image/codesonar-github/. /opt/codesonar-github
+COPY --from=codesonar_install_staging /opt3/codesonar-gitlab-integration-1.5p0/distro-image/. /opt/codesonar-gitlab
 
 
 ENV TZ=America/New_York 

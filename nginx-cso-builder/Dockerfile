@@ -1,10 +1,12 @@
 FROM canuckmh/nginx-builder:latest
 
-RUN apt-get update && apt-get install gosu
+RUN apt-get update && apt-get -y install gosu gridsite-clients
+# gridsite-clients is needed for urlencode
 
 # Add CodeSonar from the latest CodeSonar release
 COPY --from=canuckmh/codesonar-c-builder:7.4p0 /opt/codesonar/. /opt/codesonar
 COPY --from=canuckmh/codesonar-c-builder:7.4p0 /opt/codesonar-github/. /opt/codesonar-github
+COPY --from=canuckmh/codesonar-c-builder:7.4p0 /opt/codesonar-gitlab/. /opt/codesonar-gitlab
 
 # This is to adjust the user in the container to a local user
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
