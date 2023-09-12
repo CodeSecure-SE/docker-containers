@@ -95,7 +95,7 @@
 # normally use to build your software.
 
 # Any glibc-based distro will work.  Alpine will not.
-ARG BASE_IMAGE=ubuntu
+ARG BASE_IMAGE=ubuntu:22.04
 
 FROM $BASE_IMAGE as codesonar_install_staging
 
@@ -111,7 +111,10 @@ ADD $CODESONAR_PACKAGE /opt/
 RUN ln -s /opt/codesonar-* /opt/codesonar
 ADD codesonar-github-integration-1.2p0.tar.gz /opt2/
 ADD codesonar-gitlab-integration-1.5p0.tar.gz /opt3/
+<<<<<<< HEAD
 
+=======
+>>>>>>> 456f9d7 (Add python3)
 
 # Accept the EULA
 RUN rm /opt/codesonar/UNACCEPTED_LICENSE.txt
@@ -228,10 +231,11 @@ COPY --from=codesonar_install_staging /opt/codesonar/. /opt/codesonar
 COPY --from=codesonar_install_staging /opt2/codesonar-github-integration-1.2p0/distro-image/codesonar-github/. /opt/codesonar-github
 COPY --from=codesonar_install_staging /opt3/codesonar-gitlab-integration-1.5p0/distro-image/. /opt/codesonar-gitlab
 
+ENV PATH="/opt/codesonar/codesonar/bin:${PATH}"
 
 ENV TZ=America/New_York 
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-RUN apt-get update && apt-get -y install build-essential git vim cmake libssl-dev tclsh
+RUN apt-get update && apt-get -y install build-essential git vim cmake libssl-dev tclsh time libz-dev libpcre3-dev gridsite-clients
 
 RUN useradd codesonar -d /home/codesonar -s /bin/bash -m

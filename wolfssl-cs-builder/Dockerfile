@@ -1,6 +1,6 @@
 FROM canuckmh/nginx-builder:latest
 
-RUN apt-get update && apt-get -y install gosu time gridsite-clients
+RUN apt-get update && apt-get -y install gosu time gridsite-clients python3
 
 # Add CodeSonar from the latest CodeSonar release
 COPY --from=canuckmh/codesonar-c-builder:7.3p1 /opt/codesonar/. /opt/codesonar
