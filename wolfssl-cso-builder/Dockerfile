@@ -1,6 +1,6 @@
 FROM canuckmh/nginx-builder:latest
 
-RUN apt-get update && apt-get -y install gosu time gridsite-clients python3 python3-pip
+RUN apt-get update && apt-get -y install gosu time gridsite-clients python3 python3-pip autoconf libtool automake
 RUN pip3 install csv2md
 
 # Add CodeSonar from the latest CodeSonar release
