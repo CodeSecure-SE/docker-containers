@@ -1,1 +1,1 @@
-docker build -t canuckmh/curl-cso-builder:7.4p0 .
+docker build -t canuckmh/curl-cso-builder:8.0p0 .

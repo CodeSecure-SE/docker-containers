@@ -1,1 +1,1 @@
-docker build -t canuckmh/nginx-cso-builder:7.4p0 .
+docker build -t canuckmh/nginx-cso-builder:8.0p0 .

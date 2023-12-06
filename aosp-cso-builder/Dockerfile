@@ -1,6 +1,6 @@
 FROM canuckmh/aosp-builder:latest
 
-RUN apt-get update && apt-get -y install gosu time gridsite-clients python3
+RUN apt-get update && apt-get -y install gosu time gridsite-clients python3 vim gdb zip
 
 # Add CodeSonar from the latest CodeSonar release
 COPY --from=canuckmh/codesonar-c-builder:7.4p0 /opt/codesonar/. /opt/codesonar
