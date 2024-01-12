@@ -1,1 +1,2 @@
-docker build -t canuckmh/nginx-builder .
+docker build -t codesecurese/nginx-builder .
+docker push codesecurese/nginx-builder
