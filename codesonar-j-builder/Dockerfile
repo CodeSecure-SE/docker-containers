@@ -189,7 +189,10 @@ third-party/postgresql-9.2 \
 third-party/postgresql-9.3 \
 third-party/postgresql-9.6 \
 third-party/postgresql-12 \
+third-party/postgresql-13 \
+third-party/postgresql-14 \
 third-party/sqlalchemy \
+win32-fetcher \
 )
 
 RUN test "x$JAVA_ANALYSIS" '!=' x0 || test "x$HUB" '!=' x0 ||  ( cd /opt/codesonar && rm -fr \
@@ -232,6 +235,6 @@ ENV PATH="/opt/codesonar/codesonar/bin:${PATH}"
 ENV TZ=America/New_York 
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-RUN apt-get update && apt-get -y install build-essential git vim cmake libssl-dev tclsh time libz-dev libpcre3-dev gridsite-clients
+RUN apt-get update && apt-get -y install build-essential git vim cmake libssl-dev tclsh time libz-dev libpcre3-dev gridsite-clients && apt-get clean
 
 RUN useradd codesonar -d /home/codesonar -s /bin/bash -m
