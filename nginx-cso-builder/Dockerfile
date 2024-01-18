@@ -1,6 +1,6 @@
 FROM codesecurese/nginx-builder:latest
 
-RUN apt-get update && apt-get -y install gosu time gridsite-clients python3
+RUN apt-get update && apt-get -y install gosu time gridsite-clients python3 & & apt-get clean
 
 # Add CodeSonar from the latest CodeSonar release
 COPY --from=codesecurese/codesonar-c-builder:8.0p0 /opt/codesonar/. /opt/codesonar
