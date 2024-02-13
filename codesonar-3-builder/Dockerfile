@@ -235,6 +235,8 @@ ENV PATH="/opt/codesonar/codesonar/bin:${PATH}"
 ENV TZ=America/New_York 
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-RUN apt-get update && apt-get -y install build-essential git vim cmake libssl-dev tclsh time libz-dev libpcre3-dev gridsite-clients
+RUN apt-get update && apt-get -y install git vim curl python3
 
 RUN useradd codesonar -d /home/codesonar -s /bin/bash -m
+
+user codesonar
