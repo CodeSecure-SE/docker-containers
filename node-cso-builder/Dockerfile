@@ -1,8 +1,11 @@
 FROM ubuntu:22.04
 
+# Ubuntu 22.04 has node 12 and we need >14
+RUN apt-get update && apt-get install -y curl && apt-get clean
+RUN curl -sL https://deb.nodesource.com/setup_18.x -o nodesource_setup.sh
+RUN bash nodesource_setup.sh
+RUN apt-get update && apt-get install -y nodejs && apt-get clean
 
-RUN apt-get update && apt-get install -y nodejs npm && apt-get clean
-RUN npm install eslint --global
 
 COPY --from=codesecurese/codesonar-3-builder:8.1b0 /opt/codesonar/. /opt/codesonar
 COPY --from=codesecurese/codesonar-3-builder:8.1b0 /opt/codesonar-github/. /opt/codesonar-github
