@@ -1,8 +1,8 @@
 FROM ubuntu:22.04
 
 
-RUN apt-get update && apt-get install -y nodejs npm build-essential && apt-get clean
-RUN npm install eslint --global 
+RUN apt-get update && apt-get install -y nodejs npm && apt-get clean
+RUN npm install eslint --global
 
 COPY --from=codesecurese/codesonar-3-builder:8.1b0 /opt/codesonar/. /opt/codesonar
 COPY --from=codesecurese/codesonar-3-builder:8.1b0 /opt/codesonar-github/. /opt/codesonar-github
