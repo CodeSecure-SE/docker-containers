@@ -18,7 +18,7 @@ RUN curl -s "https://get.sdkman.io" | /bin/bash
 
 # this SHELL command is needed to allow using source
 SHELL ["/bin/bash", "-c"]  
-RUN source "$HOME/.sdkman/bin/sdkman-init.sh" $$ sdk install kotlin
+RUN source "$HOME/.sdkman/bin/sdkman-init.sh" && sdk install kotlin
 
 RUN groupadd --gid 1000 user\
     && useradd --uid 1000 --gid 1000 -m user
