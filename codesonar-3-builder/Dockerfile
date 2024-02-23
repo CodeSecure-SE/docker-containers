@@ -192,7 +192,6 @@ third-party/postgresql-12 \
 third-party/postgresql-13 \
 third-party/postgresql-14 \
 third-party/sqlalchemy \
-win32-fetcher \
 )
 
 RUN test "x$JAVA_ANALYSIS" '!=' x0 || test "x$HUB" '!=' x0 ||  ( cd /opt/codesonar && rm -fr \
