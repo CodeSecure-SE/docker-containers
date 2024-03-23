@@ -3,9 +3,9 @@ FROM ubuntu:22.04
 RUN apt update && apt -y install gosu time git gridsite-clients curl zip unzip default-jdk locales && apt clean
 
 # Add CodeSonar from the latest CodeSonar release
-COPY --from=codesecurese/codesonar-3-builder:8.1b0 /opt/codesonar/. /opt/codesonar
-COPY --from=codesecurese/codesonar-3-builder:8.1b0 opt/codesonar-github/. /opt/codesonar-github
-COPY --from=codesecurese/codesonar-3-builder:8.1b0 opt/codesonar-gitlab/. /opt/codesonar-gitlab
+COPY --from=codesecurese/codesonar-3-builder:8.1b1 /opt/codesonar/. /opt/codesonar
+COPY --from=codesecurese/codesonar-3-builder:8.1b1 opt/codesonar-github/. /opt/codesonar-github
+COPY --from=codesecurese/codesonar-3-builder:8.1b1 opt/codesonar-gitlab/. /opt/codesonar-gitlab
 ENV PATH="/opt/codesonar/codesonar/bin:${PATH}"
 
 # to fix perl issue

@@ -3,9 +3,9 @@ FROM ubuntu:22.04
 RUN apt-get update && apt-get -y install gosu time git gridsite-clients python3 python3-venv python3-pip locales && apt-get clean
 
 # Add CodeSonar from the latest CodeSonar release
-COPY --from=codesecurese/codesonar-3-builder:8.1b0 /opt/codesonar/. /opt/codesonar
-COPY --from=codesecurese/codesonar-3-builder:8.1b0 opt/codesonar-github/. /opt/codesonar-github
-COPY --from=codesecurese/codesonar-3-builder:8.1b0 opt/codesonar-gitlab/. /opt/codesonar-gitlab
+COPY --from=codesecurese/codesonar-3-builder:8.1b1 /opt/codesonar/. /opt/codesonar
+COPY --from=codesecurese/codesonar-3-builder:8.1b1 opt/codesonar-github/. /opt/codesonar-github
+COPY --from=codesecurese/codesonar-3-builder:8.1b1 opt/codesonar-gitlab/. /opt/codesonar-gitlab
 ENV PATH="/opt/codesonar/codesonar/bin:${PATH}"
 
 # to fix perl issue

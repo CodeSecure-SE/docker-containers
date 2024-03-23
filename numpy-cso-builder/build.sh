@@ -1,6 +1,6 @@
-docker build -t codesecurese/numpy-cso-builder:8.1b0 .
-docker push codesecurese/numpy-cso-builder:8.1b0
+#!/bin/sh
+docker build -t codesecurese/numpy-cso-builder:$2 .
+docker push codesecurese/numpy-cso-builder:$2
 
-# GHCR builds, commented out
-#docker build -t ghcr.io/codesecure-se/numpy-cso-builder:8.1b0 .
-#docker push ghcr.io/codesecure-se/numpy-cso-builder:8.1b0
+docker tag codesecurese/numpy-cso-builder:$2 ghcr.io/codesecure-se/numpy-cso-builder:$2
+docker push ghcr.io/codesecure-se/numpy-cso-builder:$2
