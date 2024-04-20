@@ -3,9 +3,9 @@ FROM codesecurese/nginx-builder:latest
 RUN apt-get update && apt-get -y install gosu time gridsite-clients python3 && apt-get clean
 
 # Add CodeSonar from the latest CodeSonar release
-COPY --from=codesecurese/codesonar-c-builder:8.1b1 /opt/codesonar/. /opt/codesonar
-COPY --from=codesecurese/codesonar-c-builder:8.1b1 /opt/codesonar-github/. /opt/codesonar-github
-COPY --from=codesecurese/codesonar-c-builder:8.1b1 /opt/codesonar-gitlab/. /opt/codesonar-gitlab
+COPY --from=codesecurese/codesonar-c-builder:8.1p0 /opt/codesonar/. /opt/codesonar
+COPY --from=codesecurese/codesonar-c-builder:8.1p0 /opt/codesonar-github/. /opt/codesonar-github
+COPY --from=codesecurese/codesonar-c-builder:8.1p0 /opt/codesonar-gitlab/. /opt/codesonar-gitlab
 ENV PATH="/opt/codesonar/codesonar/bin:${PATH}"
 
 RUN groupadd --gid 1000 user\

@@ -10,9 +10,9 @@ ENV GOPATH="/usr/local/go"
 RUN /usr/local/go/bin/go install honnef.co/go/tools/cmd/staticcheck@2023.1.6
 
 # Add CodeSonar from the latest CodeSonar release
-COPY --from=codesecurese/codesonar-3-builder:8.1b1 /opt/codesonar/. /opt/codesonar
-COPY --from=codesecurese/codesonar-3-builder:8.1b1 opt/codesonar-github/. /opt/codesonar-github
-COPY --from=codesecurese/codesonar-3-builder:8.1b1 opt/codesonar-gitlab/. /opt/codesonar-gitlab
+COPY --from=codesecurese/codesonar-3-builder:8.1p0 /opt/codesonar/. /opt/codesonar
+COPY --from=codesecurese/codesonar-3-builder:8.1p0 opt/codesonar-github/. /opt/codesonar-github
+COPY --from=codesecurese/codesonar-3-builder:8.1p0 opt/codesonar-gitlab/. /opt/codesonar-gitlab
 ENV PATH="/opt/codesonar/codesonar/bin:/usr/local/go/bin:${PATH}"
 
 # to fix perl issue
